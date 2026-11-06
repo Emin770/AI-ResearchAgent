@@ -1,22 +1,24 @@
-# 🤖 AI-Research & Career Intelligence Agent
+# 🤖 AI-Research & Career Intelligence Agent (v2.0)
 
-Ein autonomer KI-Agent in Python zur automatisierten Recherche von Unternehmensprofilen, Fachbereichen und Karriereangeboten. 
+Ein autonomer KI-Agent in Python zur automatisierten Recherche von Unternehmensprofilen, Fachbereichen und Stellenangeboten. 
 
-Der Agent führt eine **Deep-Search-Recherche** durch: Er kombiniert Live-Websuche mit gezieltem Web-Scraping von Karriereseiten, analysiert die Volltexte über ein Large Language Model (LLM via Groq) und generiert strukturierte Berichte im Markdown-Format samt Quellenverzeichnis.
+Der Agent führt eine **Deep-Search-Recherche** durch: Er kombiniert Live-Websuche mit gezieltem Web-Scraping von Karriereseiten, analysiert die Volltexte über ein Large Language Model (LLM via Groq) und stellt die Ergebnisse in einem **interaktiven Web-Dashboard** oder als Markdown-Dateien zur Verfügung.
 
 ---
 
 ## 💡 Features
 
-- **🔍 Live-Websuche & Deep Scraping**: Durchsucht das Netz via DuckDuckGo und besucht automatisiert die echten Karriereseiten (HTML-Parsing mit `BeautifulSoup`).
+- **🌐 Interaktives Web-Dashboard (v2.0)**: Benutzeroberfläche mit Streamlit, Live-Analyseanzeige und direktem Markdown-Download.
+- **💻 CLI & Batch-Modus (v1.0)**: Terminal-Ausführung für automatisierte Skriptabläufe über mehrere Unternehmen.
+- **🔍 Deep Web Scraping**: Kombination aus DuckDuckGo-Websuche und echtem HTML-Parsing (`requests` & `BeautifulSoup`) zur Erkennung relevanter Stellenangebote.
 - **🤖 LLM-Analyse**: Nutzt Groq (GPT-basierte Modelle) zur Extraktion von Kernkompetenzen, Fachbereichen und Karrierestufen (Junior, Senior, Werkstudent, Praktikum).
-- **⚙️ Modulare Einstellungen**: Unterstützt Batch-Analysen für mehrere Firmen sowie optionale Keyword-Filter (z. B. gezielt nach *Werkstudent* oder *KI*).
-- **💾 Automatischer Export**: Speichert strukturierte Berichte als `.md`-Dateien inkl. Quellenverzeichnis (URLs).
+- **💾 Automatischer Export**: Speichert strukturierte Berichte inklusive Quellenverzeichnis (URLs).
 
 ---
 
 ## 🛠️ Tech Stack
 
+- **GUI / Dashboard**: Streamlit
 - **Programmiersprache**: Python 3.10+
 - **LLM API**: `groq`
 - **Web-Suche & Scraping**: `ddgs` (DuckDuckGo), `requests`, `beautifulsoup4`
@@ -27,39 +29,53 @@ Der Agent führt eine **Deep-Search-Recherche** durch: Er kombiniert Live-Websuc
 ## 🚀 Schnellstart
 
 ### 1. Repository klonen
-bash
-git clone https://github.com/Emin770/AI-ResearchAgent.git
+```bash
+git clone [https://github.com/Emin770/AI-ResearchAgent.git](https://github.com/Emin770/AI-ResearchAgent.git)
 cd AI-ResearchAgent
-
-### 2. Virtuelle Umgebung erstellen & Pakete installieren
-
+2. Virtuelle Umgebung erstellen & Abhängigkeiten installieren
+Bash
 python -m venv venv
-
-Windows:
+# Windows:
 venv\Scripts\activate
-
-Mac/Linux:
+# Mac/Linux:
 source venv/bin/activate
 
-pip install groq ddgs requests beautifulsoup4 python-dotenv
+pip install groq ddgs requests beautifulsoup4 python-dotenv streamlit
+3. API-Key einrichten
+Erstelle eine .env-Datei im Hauptverzeichnis und trage deinen Groq API-Key ein:
 
-### 3. API-Key einrichten
-Erstelle eine `.env`-Datei im Hauptverzeichnis und trage deinen Groq API-Key ein:
-
-env
+Code-Snippet
 GROQ_API_KEY=dein_groq_api_key_hier
+🖥️ Anwendung starten
+Option A: Web-Dashboard (v2.0 – Empfohlen)
+Starte die interaktive Benutzeroberfläche im Browser:
 
-### 4. Agenten ausführen
+Bash
+streamlit run app.py
+Option B: Terminal-Skript (v1.0 CLI)
+Starte den automatisierten CLI-Agenten im Terminal:
 
-bash
+Bash
 python main.py
+📂 Beispiel-Output
+Der Agent generiert strukturierte Analysen mit folgendem Aufbau:
+
+Unternehmensprofil & Kernkompetenzen
+
+Abteilungen & Fachbereiche (Matrix/Tabelle)
+
+Offene Stellen & Karrieremöglichkeiten (Werkstudent, Junior, Senior, Praktika)
+
+Quellenverzeichnis (Direktlinks zu den Scrape-Quellen)
+
 
 ---
 
-## 📂 Beispiel-Output
+### Auf GitHub hochladen
 
-Der Agent generiert Markdown-Dateien wie `analyse_company.md` mit folgendem Aufbau:
-1. **Unternehmensprofil & Kernkompetenzen**
-2. **Abteilungen & Fachbereiche** (Matrix)
-3. **Offene Stellen & Karrieremöglichkeiten** (inkl. Level-Zuordnung)
-4. **Quellenverzeichnis** (Direktlinks)
+Führe diese Befehle in deinem Terminal aus, um das Update inklusive `app.py` und der neuen `README.md` auf GitHub zu veröffentlichen:
+
+```cmd
+git add .
+git commit -m "Feat: Upgrade to v2.0 with Streamlit Web Dashboard and updated documentation"
+git push origin main
